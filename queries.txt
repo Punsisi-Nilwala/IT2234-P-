@@ -1,0 +1,88 @@
+//Database name-uniDB
+//Collection name-student
+
+
+//insert one data set
+db.Student.insertOne(
+{
+  "regno": "2021ASP03",
+  "name": "Hasindu",
+  "age": 24,
+  "gender": "M",
+  "degree": "CS",
+  "GPA": 3.2,
+  "skills": [
+    "Java",
+    "MatLap",
+    "MySQL"
+  ]
+}
+)
+
+
+
+//insert many data set
+db.Student.insertMany(
+[
+{
+  "regno": "2021ICT15",
+  "name": "Shani",
+  "age": 23,
+  "gender": "F",
+  "degree": "IT",
+  "GPA": 3.0,
+  "skills": [
+    "C++",
+    "Java",
+    "Python"
+  ]
+},
+
+{
+  "regno": "2021ASP45",
+  "name": "Dil",
+  "age": 24,
+  "gender": "M",
+  "degree": "Maths",
+  "GPA": 3.42,
+  "skills": [
+    "Java",
+    "JS",
+    "HTML"
+  ]
+},
+{
+  "regno": "2021ICT112",
+  "name": "Dini",
+  "age": 22,
+  "gender": "F",
+  "degree": "IT",
+  "GPA": 3.71,
+  "skills": [
+    "C++",
+    "Java",
+    "Python"
+  ]
+}
+]
+)
+
+
+
+//to find female students:-
+db.Student.find({"gender":"F"}) 
+
+//to find students who know C++:-
+{skills:{$in:['C++']}}
+
+//to find students who know C++ and MongoDB:-
+{skills:{$in:['C++','MongoDB']}}
+
+//sort by GPA
+{ GPA: -1 }
+
+//Sort IT students by GPA
+db.Student.find({'degree':'IT'}).sort({'GPA':1})
+
+//
+db.Student.find({'degree':'IT','gender':'F'}).sort({'age':1})
